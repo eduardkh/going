@@ -2,6 +2,11 @@ package main
 
 import "fmt"
 
+var x string = "this is a string outside of a function"
+
+// this (f := "apple") assignment is wrong - shorthand variables can be declared only in a function
+// f := "apple"
+
 func main() {
 
 	var a = "initial"
@@ -16,6 +21,9 @@ func main() {
 	var e int
 	fmt.Println(e)
 
+	// shorthand variables can be declared only in a function
 	f := "apple"
 	fmt.Println(f)
+
+	fmt.Println(x)
 }
