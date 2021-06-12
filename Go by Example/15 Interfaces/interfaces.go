@@ -9,6 +9,14 @@ import (
 same request format/endpoint/method
 one interface
 two different shapes
+
+for an interface to work we need:
+1. struct(s) - here we have 2 shapes
+2. method - they share the same name but return different answers
+3. interface(s) - the methods must have the same name to work with the interface
+4. calling function - must call the interface (the only dynamic type)
+
+
 */
 
 type geometry interface {
