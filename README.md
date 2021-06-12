@@ -1,30 +1,10 @@
 # Going
-## just playing around with go
-### starting a new project
-> step 1
+## My way to learn Go (golang)
 
-`find your go path - go env GOPATH`
+>1. Go by Example
 
-```
-default location C:\Users\<%USERNAME%>\
-```
+https://gobyexample.com/
 
-> step 2
+>2. go vs python
 
-`create directory structure (copy URI structure)`
-
-```
-C:\Users\<%USERNAME%>\go\src\github.com\<github-user>\going
-```
-
-> step 3
-
-`you are ready to go :)`
-
-> or just
-
-`initiate you project with go mod`
-
-```
-go mod init github.com/eduardkh/going
-```
+`me comparing the two languages`
