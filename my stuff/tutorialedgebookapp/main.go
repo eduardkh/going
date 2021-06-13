@@ -5,16 +5,10 @@ import (
 	"log"
 	"tutorialedgebookapp/book"
 	"tutorialedgebookapp/database"
+	"tutorialedgebookapp/routes"
 
 	"github.com/gofiber/fiber/v2"
 )
-
-func setupRoutes(app *fiber.App) {
-	app.Get("/api/v1/book", book.GetBooks)
-	app.Get("/api/v1/book/:id", book.GetBook)
-	app.Post("/api/v1/book", book.NewBook)
-	app.Delete("/api/v1/book/:id", book.DeleteBook)
-}
 
 func main() {
 	app := fiber.New()
@@ -23,6 +17,6 @@ func main() {
 	// Migrate the schema
 	database.DBConn.AutoMigrate(&book.Book{})
 	fmt.Println("✔️  Database Migrated")
-	setupRoutes(app)
+	routes.BookApiRoutes(app)
 	log.Fatal(app.Listen(":3000"))
 }
