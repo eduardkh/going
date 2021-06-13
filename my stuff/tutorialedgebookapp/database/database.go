@@ -1,10 +1,17 @@
 package database
 
 import (
-	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	"fmt"
+
+	"gorm.io/driver/sqlite"
+	"gorm.io/gorm"
 )
 
-var (
-	DBConn *gorm.DB
-)
+var DBConn, err = gorm.Open(sqlite.Open("books.db"), &gorm.Config{})
+
+func InitDatabase() {
+	if err != nil {
+		panic("failed to connect database")
+	}
+	fmt.Println("✔️  Connection Opened to Database")
+}

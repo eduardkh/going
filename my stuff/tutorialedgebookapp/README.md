@@ -27,3 +27,13 @@ https://tutorialedge.net/golang/basic-rest-api-go-fiber/
 ```go get -u ithub.com/jinzhu/gorm/dialects/sqlite```
 
 ```fiber dev```
+
+>6. updated gorm
+
+```go get -u gorm.io/gorm```
+
+```go get -u gorm.io/driver/sqlite```
+
+```go mod tidy```
+
+```fiber dev```
