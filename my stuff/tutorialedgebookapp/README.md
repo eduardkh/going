@@ -7,7 +7,7 @@ https://tutorialedge.net/golang/basic-rest-api-go-fiber/
 
 >2. Create a Project
 
-```fiber new TutorialEdge-book-app```
+```fiber new tutorialedgebookapp```
 
 >3. get Fiber
 
@@ -16,6 +16,14 @@ https://tutorialedge.net/golang/basic-rest-api-go-fiber/
 >4. Check it works
 
 
-`cd TutorialEdge-book-app`
+`cd tutorialedgebookapp`
 
 `fiber dev`
+
+>5. add ORM and database
+
+```go get -u github.com/jinzhu/gorm```
+
+```go get -u ithub.com/jinzhu/gorm/dialects/sqlite```
+
+```fiber dev```
