@@ -21,3 +21,8 @@
 
     go get github.com/mitchellh/go-homedir@v1.1.0
     cobra add hostname
+    cobra add ns
+
+> install the binary
+
+    go install cobracli.go
