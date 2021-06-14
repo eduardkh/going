@@ -157,3 +157,4 @@ cython_debug/
 
 # my Projects
 books.db
+test.db

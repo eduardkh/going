@@ -50,3 +50,18 @@ func DeleteBook(c *fiber.Ctx) error {
 	db.Delete(&book, id)
 	return c.JSON(book)
 }
+func UpdateBook(c *fiber.Ctx) error {
+	// get data from DB
+	id := c.Params("id")
+	db := database.DBConn
+	var book Book
+	db.First(&book, id)
+	// get data from FE
+	feBook := new(Book)
+	if err := c.BodyParser(feBook); err != nil {
+		c.Status(400).SendString("Bad Request")
+	}
+	// update data in DB
+	db.Model(&book).Updates(map[string]interface{}{"Title": feBook.Title, "Author": feBook.Author, "Rating": feBook.Rating})
+	return c.JSON(book)
+}
