@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"net"
 
 	"github.com/spf13/cobra"
 )
@@ -17,91 +18,28 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println(interfaceDummy)
+		interfaces, err := net.Interfaces()
+		// handle err
+		if err != nil {
+			fmt.Println(err)
+		}
+		var nameInterf, nameAddress, nameMAC, nameMTU string = "Interface", "IP Addres", "MAC-Address", "MTU"
+		fmt.Printf("%-34v %-20v %-17v %-v\n", nameInterf, nameAddress, nameMAC, nameMTU)
+		for _, iface := range interfaces {
+			if iface.Flags&net.FlagUp == 0 {
+				continue // interface down
+			}
+			if iface.Flags&net.FlagLoopback != 0 {
+				continue // loopback interface
+			}
+			addrs, err := iface.Addrs()
+			if err != nil {
+				panic(err)
+			}
+			fmt.Printf("%-34v %-20v %-v %v\n", iface.Name, addrs[1], iface.HardwareAddr, iface.MTU)
+		}
 	},
 }
-
-var interfaceDummy string = `
-GigabitEthernet0/0 is administratively down, line protocol is down
-  Internet protocol processing disabled
-GigabitEthernet0/1 is up, line protocol is up
-  Internet address is 13.0.0.3/24
-  Broadcast address is 255.255.255.255
-  Address determined by non-volatile memory
-  MTU is 1500 bytes
-  Helper address is not set
-  Directed broadcast forwarding is disabled
-  Outgoing access list is not set
-  Inbound  access list is not set
-  Proxy ARP is enabled
-  Local Proxy ARP is disabled
-  Security level is default
-  Split horizon is enabled
-  ICMP redirects are always sent
-  ICMP unreachables are always sent
-  ICMP mask replies are never sent
-  IP fast switching is enabled
-  IP fast switching on the same interface is disabled
-  IP Flow switching is disabled
-  IP CEF switching is enabled
-  IP CEF switching turbo vector
-  IP multicast fast switching is enabled
-  IP multicast distributed fast switching is disabled
-  IP route-cache flags are Fast, CEF
-  Router Discovery is disabled
-  IP output packet accounting is disabled
-  IP access violation accounting is disabled
-  TCP/IP header compression is disabled
-  RTP/IP header compression is disabled
-  Policy routing is disabled
-  Network address translation is disabled
-  BGP Policy Mapping is disabled
-  Input features: MCI Check
-  IPv4 WCCP Redirect outbound is disabled
-  IPv4 WCCP Redirect inbound is disabled
-  IPv4 WCCP Redirect exclude is disabled
-GigabitEthernet0/2 is administratively down, line protocol is down
-  Internet protocol processing disabled
-GigabitEthernet0/3 is administratively down, line protocol is down
-  Internet protocol processing disabled
-Loopback0 is up, line protocol is up
-  Internet address is 3.3.3.3/24
-  Broadcast address is 255.255.255.255
-  Address determined by non-volatile memory
-  MTU is 1514 bytes
-  Helper address is not set
-  Directed broadcast forwarding is disabled
-  Outgoing access list is not set
-  Inbound  access list is not set
-  Proxy ARP is enabled
-  Local Proxy ARP is disabled
-  Security level is default
-  Split horizon is enabled
-  ICMP redirects are always sent
-  ICMP unreachables are always sent
-  ICMP mask replies are never sent
-  IP fast switching is enabled
-  IP fast switching on the same interface is disabled
-  IP Flow switching is disabled
-  IP CEF switching is enabled
-  IP CEF switching turbo vector
-  IP Null turbo vector
-  IP multicast fast switching is enabled
-  IP multicast distributed fast switching is disabled
-  IP route-cache flags are Fast, CEF
-  Router Discovery is disabled
-  IP output packet accounting is disabled
-  IP access violation accounting is disabled
-  TCP/IP header compression is disabled
-  RTP/IP header compression is disabled
-  Policy routing is disabled
-  Network address translation is disabled
-  BGP Policy Mapping is disabled
-  Input features: MCI Check
-  IPv4 WCCP Redirect outbound is disabled
-  IPv4 WCCP Redirect inbound is disabled
-  IPv4 WCCP Redirect exclude is disabled
-`
 
 func init() {
 	ipCmd.AddCommand(interfaceCmd)
