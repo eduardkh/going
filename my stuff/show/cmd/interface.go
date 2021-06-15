@@ -23,7 +23,7 @@ to quickly create a Cobra application.`,
 		if err != nil {
 			fmt.Println(err)
 		}
-		var nameInterf, nameAddress, nameMAC, nameMTU string = "Interface", "IP Addres", "MAC-Address", "MTU"
+		var nameInterf, nameAddress, nameMAC, nameMTU string = "Interface", "IP-Addres", "MAC-Address", "MTU"
 		fmt.Printf("%-34v %-20v %-17v %-v\n", nameInterf, nameAddress, nameMAC, nameMTU)
 		for _, iface := range interfaces {
 			if iface.Flags&net.FlagUp == 0 {
