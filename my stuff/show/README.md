@@ -21,3 +21,9 @@
     go run show.go
 
 `functionality`
+
+> add commands
+
+    cobra add ip
+    cobra add interface
+    cobra add brief
