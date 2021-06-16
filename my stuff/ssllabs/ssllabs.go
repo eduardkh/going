@@ -1,10 +1,24 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 )
+
+// GOT IT HERE - https://stackoverflow.com/questions/43770273/json-unmarshalling-without-struct
+func JsonIndent(jsontext []byte) ([]byte, error) {
+	var err error
+	var jsonIndent []byte
+	var objmap map[string]*json.RawMessage
+	err = json.Unmarshal(jsontext, &objmap)
+	if err != nil {
+		return jsonIndent, err
+	}
+	jsonIndent, err = json.MarshalIndent(objmap, "", "  ")
+	return jsonIndent, err
+}
 
 func checkError(err error) {
 	if err != nil {
@@ -31,5 +45,7 @@ func main() {
 	body, err := ioutil.ReadAll(res.Body)
 	checkError(err)
 
-	fmt.Println(string(body))
+	unmarshalByteBody, err := JsonIndent(body)
+	checkError(err)
+	fmt.Println(string(unmarshalByteBody))
 }
