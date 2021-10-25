@@ -1,20 +1,35 @@
 package main
 
-import "github.com/kataras/iris/v12"
+import (
+	"time"
+
+	_ "github.com/iris-contrib/pongo2-addons/v4"
+	"github.com/kataras/iris/v12"
+)
+
+var startTime = time.Now()
 
 func main() {
-	app := newApp()
+	app := iris.New()
+
+	tmpl := iris.Django("./templates", ".html")
+	tmpl.Reload(true)                             // reload templates on each request (development mode)
+	tmpl.AddFunc("greet", func(s string) string { // {{greet(name)}}
+		return "Greetings " + s + "!"
+	})
+
+	app.RegisterView(tmpl)
+
+	app.Get("/", hi)
 
 	app.Listen(":8080")
 }
 
-func newApp() *iris.Application {
-	app := iris.New()
-	app.Get("/", index)
+func hi(ctx iris.Context) {
 
-	return app
-}
-
-func index(ctx iris.Context) {
-	ctx.HTML("<h1>Index Page</h1>")
+	ctx.View("hi.html", iris.Map{
+		"title":           "Hi Page",
+		"name":            "iris",
+		"serverStartTime": startTime,
+	})
 }
