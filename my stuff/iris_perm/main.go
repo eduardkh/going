@@ -13,6 +13,9 @@ func main() {
 	templates := iris.Django("./templates", ".html")
 	app.RegisterView(templates)
 
+	// Serve assets (e.g. javascript, css).
+	app.HandleDir("/public", iris.Dir("./public"))
+
 	// routes
 	app.Get("/", handlers.Index)
 	app.Get("/books", handlers.GetBooks)
