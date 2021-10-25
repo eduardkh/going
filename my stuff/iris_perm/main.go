@@ -12,24 +12,21 @@ var startTime = time.Now()
 func main() {
 	app := iris.New()
 
-	tmpl := iris.Django("./templates", ".html")
-	tmpl.Reload(true)                             // reload templates on each request (development mode)
-	tmpl.AddFunc("greet", func(s string) string { // {{greet(name)}}
-		return "Greetings " + s + "!"
-	})
+	templates := iris.Django("./templates", ".html")
+	app.RegisterView(templates)
 
-	app.RegisterView(tmpl)
-
-	app.Get("/", hi)
+	app.Get("/", index)
 
 	app.Listen(":8080")
 }
 
-func hi(ctx iris.Context) {
+func index(ctx iris.Context) {
 
-	ctx.View("hi.html", iris.Map{
-		"title":           "Hi Page",
-		"name":            "iris",
+	ctx.View("index.html", iris.Map{
+		"Title":           "Page Title",
+		"FooterText":      "Footer contents",
+		"Message":         "Main contents",
+		"Name":            "iris",
 		"serverStartTime": startTime,
 	})
 }

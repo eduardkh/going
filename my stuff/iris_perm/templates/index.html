@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}<title>{{Title}}</title>{% endblock title %}
+{% block content %}
+<h1>Index Body</h1>
+<h1>Hi {{Name|capfirst}} </h1>
+<h3>Server started about {{serverStartTime|timesince}}. Refresh the page to see different result</h3>
+<h3>Message: {{Message}}</h3>
+{% endblock %}
