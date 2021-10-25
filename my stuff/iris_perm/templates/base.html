@@ -15,7 +15,12 @@
 
 <body>
     {% include "/partials/header.html" %}
-    {% block content %} {% endblock %}
+
+    <main class="Settings Skele_Contains Perfect">
+        {% include "/partials/left-menu.html" %}
+        {% block content %} {% endblock %}
+    </main>
+
     {% include "/partials/footer.html" %}
 </body>
 
