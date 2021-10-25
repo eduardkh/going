@@ -1,5 +1,46 @@
 {% extends "base.html" %}
 {% block title %}<title>{{Title}}</title>{% endblock title %}
 {% block content %}
-<h3>Message: {{Message}}</h3>
-{% endblock %}
+{% comment %} <h3>Message: {{Message}}</h3> {% endcomment %}
+<div class="Center_Skele">
+    <h3 class="Brand_Heading ">Brand - All Products </h3>
+    <p><b>Tag Line Of the Brand Like : </b> Have A Healthy Life</< /p> <hr>
+        <br>
+        <div class="Product_Tray">
+            <article class="All_Product_Together Skel_First"><a href="Shopping-Product-Webiste.php"><img
+                        class="skeletonRound" src="public/images/dummy_pic.png" alt="Skeleton"></a>
+                <br><br>
+                <h4 class="Product_Name"><b>First Product Name </b></h4>
+                <hr>
+                <p>Description of the Product <b>Like:</b> Color of the Product , Warranty of the Product, Life of the
+                    Product
+                    And Much More </p>
+                <footer><a class="Buttons_Skele " href="Shopping-Product-Webiste.php">Buy Now </a></footer>
+            </article>
+
+            <article class="All_Product_Together"><a href="Shopping-Product-Webiste.php"><img class="skeletonRound"
+                        src="public/images/dummy_pic.png" alt="Skeleton"></a>
+                <br><br>
+                <h4 class=" Product_Name"><b>Second Product </b></h4>
+                <hr>
+
+                <p>Description of the Product <b>Like:</b> Color of the Product , Warranty of the Product, Life of the
+                    Product
+                    And Much More </p>
+
+                <footer><a class="Buttons_Skele " href="Shopping-Product-Webiste.php">Buy Now </a></footer>
+            </article>
+
+            <article class="All_Product_Together"><a href="Shopping-Product-Webiste.php"><img class=" skeletonRound"
+                        src="public/images/dummy_pic.png" alt="Skeleton"></a>
+                <br><br>
+                <h4 class=" Product_Name"><b>Third Product Name </b></h4>
+                <hr>
+                <p>Description of the Product <b>Like:</b> Color of the Product , Warranty of the Product, Life of the
+                    Product
+                    And Much More </p>
+
+                <footer><a class="Buttons_Skele" href="Shopping-Product-Webiste.php">Buy Now </a></footer>
+            </article>
+        </div>
+        {% endblock %}
