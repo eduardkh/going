@@ -1,0 +1,337 @@
+/*
+* Skeleton V2.0.4
+* Copyright 2014, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 12/29/2014
+
+*/
+
+/* Table of contents
+––––––––––––––––––––––––––––––––––––––––––––––––––
+- Grid
+- Base Styles
+- Typography
+- Image 
+- Links
+- Buttons
+- Forms
+- Media Queries
+*/
+
+
+
+
+/* Grid
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box; }
+.column,
+.columns {
+  width: 100%;
+  float: left;
+  box-sizing: border-box; }
+  
+  /* Base Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+html{overflow-y:scroll; overflow-x:hidden;}
+html, body{margin:0; padding:0; font-size:14px; line-height:1.6em;}
+
+
+.Buttons_Skele{display:inline-block; padding:10px 20px 12px; text-transform:uppercase; border:1px solid;border-radius: 8%;}
+
+.Product_Tray{display:block;}
+
+.Perfect::before, .Perfect::after{display:table; content:"";}
+
+
+ .Product_Tray::before, .Product_Tray::after{display:table; content:"";}
+ 
+ .Perfect, .Perfect::after{clear:both;}
+ 
+ 
+.Product_Tray, .Product_Tray::after{clear:both;}
+
+a{outline:none; text-decoration:none;}
+
+.Left{float:left;}
+.Right{float:right;}
+
+
+/* Typography
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-weight: 300; }
+h1 { font-size: 4.0rem; line-height: 1.2;  letter-spacing: -.1rem;}
+h2 { font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; }
+h3 { font-size: 3.0rem; line-height: 1.3;  letter-spacing: -.1rem; }
+h4 { font-size: 2.4rem; line-height: 1.35; letter-spacing: -.08rem; }
+h5 { font-size: 1.8rem; line-height: 1.5;  letter-spacing: -.05rem; }
+h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0;
+
+}
+
+
+
+
+	.Footer_Skel{
+margin-top:-60px;
+text-align:center;
+margin-left:180px;
+	}
+	
+	
+	
+	.Footer_Skel hr{
+		width:50%;	
+		opacity:0.3;
+	}
+	
+	
+	
+
+	.Footer_Skel a{
+
+color:#1eaedb;
+	}
+
+
+
+body, input, textarea, select{font-family:Verdana, Geneva, sans-serif;}
+h1, h2, h3, h4, h5, h6
+
+
+
+
+h1, h2, h3, h4, h5, h6, .heading{margin:0 0 20px 0; font-size:22px; line-height:normal; font-weight:normal; text-transform:uppercase;}
+
+address{font-style:normal; font-weight:normal;}
+hr{display:block; width:100%; height:1px; border:solid; border-width:1px 0 0 0;}
+
+/* For Image
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+img{width:auto; max-width:100%;}
+
+
+
+
+.Product_Name{font-size:1.2rem;}
+.Brand_Heading{font-size:1.8rem;}
+
+.{display:block; width:100%; margin:0; padding:0; text-align:left; word-wrap:break-word;}
+
+.Settings{display:block; margin:0 auto;}
+
+
+
+address, article, aside, figcaption, figure, footer, Head_i, main, nav, section{display:block; margin:0; padding:0;}
+
+
+/* Grids Also
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.one_half, .All_Product_Together, .two_third, .O-Half-Skele, .two_quarter, .Center_Skele{display:inline-block; float:left; margin:0 0 0 3.06748466257669%; list-style:none;}
+
+.Skel_First{margin-left:0;}
+
+.O-Half-Skele{width:22.69938650306748%;}
+.All_Product_Together{width:31.28834355828221%;}
+.Center_Skele{width:74.23312883435584%;}
+
+
+/* Logo _ Of Navigation
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+#Head_i{}
+
+#Head_i #logo{margin:30px 0 0 0;}
+#Head_i #logo h1{margin:0; padding:0; font-size:22px; text-transform:uppercase;}
+
+
+
+
+
+.Skele_Contains{padding:80px 0;}
+
+
+.Skele_Contains .content{}
+
+
+
+
+
+*, *::before, *::after{transition:all .3s ease-in-out;}
+#mainav form *{transition:none !important;}
+
+
+/* Logo _ Of Navigation
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+nav ul, nav ol{margin:0; padding:0; list-style:none;}
+
+
+
+
+#mainav{}
+#mainav ul{margin-top:4px;}
+#mainav ul{text-transform:uppercase;}
+#mainav ul ul{z-index:9999; position:absolute; width:180px; text-transform:none;}
+#mainav ul ul ul{left:180px; top:0;}
+#mainav li{display:inline-block; position:relative; margin:0 15px 0 0; padding:0;}
+#mainav li:last-child{margin-right:0;}
+#mainav li li{width:100%; margin:0;}
+#mainav li a{display:block; padding:30px 0;}
+#mainav li li a{border:solid; border-width:0 0 1px 0;}
+#mainav .drop{padding-left:15px;}
+#mainav li li a, #mainav li li .drop{display:block; margin:0; padding:10px 15px;}
+#mainav .drop::after, #mainav li li .drop::after{content:"\f0d7";}
+#mainav .drop::after{top:35px; left:5px;}
+#mainav li li .drop::after{top:15px; left:5px;}
+#mainav ul ul{visibility:hidden; opacity:0;}
+#mainav ul li:hover > ul{visibility:visible; opacity:1;}
+
+
+/* Side
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.Side nav{display:block; width:100%;}
+.Side nav li{margin:0 0 3px 0; padding:0;}
+.Side nav a{display:block; position:relative; margin:0; padding:5px 10px 5px 15px; text-decoration:none; border:solid; border-width:0 0 1px 0;}
+
+.Side nav ul ul a{padding-left:35px;}
+.Side nav ul ul a::after{left:25px;}
+.Side nav ul ul ul a{padding-left:55px;}
+.Side nav ul ul ul a::after{left:45px;}
+
+
+
+
+
+a{color:white;}
+a:active, a:focus{background:transparent;}
+hr{border-color:#D7D7D7;}
+
+
+
+/* Buttons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.Buttons_Skele, .Buttons_Skele.inverse:hover{color:white; background:#1eaedb; border-color:gray;}
+.Buttons_Skele:hover, .Buttons_Skele.inverse{color:inherit; background-color:transparent; border-color:inherit;}
+
+
+
+.Template{
+	background:#1eaedb;
+	
+}
+	
+
+.Template a {
+	color:white;
+	font-weight:bold
+	
+}
+
+
+.Three{color:#797979; background-color:#FFFFFF;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.Skele_Contains .Side nav a{color:inherit; border-color:#D7D7D7;}
+.Skele_Contains .Side nav a:hover{color:#56AED4;}
+
+
+
+
+/* Media Queries
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/*
+Note: The best way to structure the use of media queries is to create the queries
+near the relevant code. For example, if you wanted to change the styles for buttons
+on small devices, paste the mobile query code up in the buttons section and style it
+there.
+*/
+
+@-ms-viewport{width:device-width;}
+
+
+
+
+@media screen and (min-width:978px){
+	.Settings{max-width:978px;}
+	
+
+
+}
+
+
+
+@media screen and (max-width:900px){
+	.Settings{max-width:90%;}
+
+
+	#Head_i{padding:30px 0 15px;}
+	#Head_i #logo{margin:0;}
+
+
+
+
+
+
+
+}
+
+
+@media screen and (max-width:750px){
+	.imgl, .imgr{display:inline-block; float:none; margin:0 0 10px 0;}
+	.Left, .Right{display:block; float:none; }
+ .All_Product_Together, .O-Half-Skele, .Center_Skele{display:block; float:none; width:auto; margin:0 0 30px 0; padding:0;}
+
+	#topbar, #Head_i{text-align:center;}
+
+
+
+}
+
+
+@media screen and (max-width:450px){
+	.latest li{float:none; width:100%;}
+	
+	
+}
+
+
+
+
+.skeletonRound{
+border-radius: 5%;
+
+}
+
+
+
