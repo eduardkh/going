@@ -3,16 +3,17 @@ package main
 import "fmt"
 
 func main() {
-	groups := [][]string{
-		[]string{"10", "VLAN_10"},
-		[]string{"20", "VLAN_20"},
-		[]string{"30", "VLAN_30"},
-		[]string{"40", "VLAN_40"},
-		[]string{"50", "VLAN_50"},
-		[]string{"60", "VLAN_60"},
-		[]string{"70", "VLAN_70"}}
+	groups := [][2]string{
+		[2]string{"10", "VLAN_10"},
+		[2]string{"30", "VLAN_30"},
+		[2]string{"40", "VLAN_40"},
+		[2]string{"20", "VLAN_20"},
+		[2]string{"50", "VLAN_50"},
+		[2]string{"60", "VLAN_60"},
+		[2]string{"70", "VLAN_70"}}
 	for _, v := range groups {
-		fmt.Println("vlan ", v[0], "\nname ", v[1])
+		fmt.Printf("vlan %v\n", v[0])
+		fmt.Printf("name %v\n", v[1])
 
 	}
 }
