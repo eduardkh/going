@@ -70,9 +70,10 @@ func setcookie(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
 		log.Println("POST /setcookie")
 		c := &http.Cookie{
-			Name:   "session-id",
-			Value:  "MTIzNDY1NDY1NDY1NDY1NDY1NDEzMjE2",
-			MaxAge: 300,
+			Name:     "session-id",
+			Value:    "MTIzNDY1NDY1NDY1NDY1NDY1NDEzMjE2",
+			MaxAge:   300,
+			HttpOnly: true,
 		}
 		http.SetCookie(w, c)
 		http.Redirect(w, r, "/", http.StatusSeeOther)
