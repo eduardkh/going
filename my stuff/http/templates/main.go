@@ -23,5 +23,9 @@ func about(w http.ResponseWriter, r *http.Request) {
 	templates.ExecuteTemplate(w, "about.gohtml", nil)
 }
 func suka(w http.ResponseWriter, r *http.Request) {
-	templates.ExecuteTemplate(w, "suka.gohtml", nil)
+	context := map[string]string{
+		"Name": "Suka",
+		"Age":  "20",
+	}
+	templates.ExecuteTemplate(w, "suka.gohtml", context)
 }
