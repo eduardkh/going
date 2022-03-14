@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>getform</h1>
+    <form action="" method="GET">
+        <input type="text" name="name" placeholder="getform name">
+        <input type="text" name="email" placeholder="getform email">
+        <input type="submit" value="submit">
+    </form>
+    {{ if and .Name .Email }}
+    <p>
+        name: {{.Name}}
+    </p>
+    <p>
+        email: {{.Email}}
+    </p>
+    {{ else }}
+    <p>
+        please enter your name and email
+    </p>
+    {{end}}
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea soluta aliquam voluptatibus a, odit impedit aliquid
+        reiciendis eligendi nesciunt error quo nam tempore ex temporibus possimus beatae ullam quod assumenda.</p>
+</body>
+
+</html>
