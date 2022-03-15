@@ -2,6 +2,7 @@ package main
 
 import (
 	"html/template"
+	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -16,6 +17,7 @@ func main() {
 	// routes
 	http.HandleFunc("/", index)
 	http.HandleFunc("/fileupload", fileupload)
+	http.HandleFunc("/uploadfile", uploadfile)
 	log.Println("Listening...")
 	http.ListenAndServe(":8080", nil)
 }
@@ -31,7 +33,7 @@ func fileupload(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	// POST process the uploaded file
-	log.Println("File Upload Endpoint Hit")
+	log.Println("File Upload Endpoint Hit - fileupload")
 	r.ParseMultipartForm(10)
 	file, fileHeader, err := r.FormFile("uploadfile")
 	if err != nil {
@@ -43,18 +45,6 @@ func fileupload(w http.ResponseWriter, r *http.Request) {
 	// log.Printf("File Size: %+v\n", fileHeader.Size)
 	// log.Printf("MIME Header: %+v\n", fileHeader.Header)
 	var osFile *os.File
-	// GitHub copilot version (os.OpenFile)
-	// osFile, err = os.OpenFile("./uploads/"+fileHeader.Filename, os.O_WRONLY|os.O_CREATE, 0666)
-	// if err != nil {
-	// 	log.Println(err)
-	// 	return
-	// }
-	// defer osFile.Close()
-	// _, err = io.Copy(osFile, file)
-	// if err != nil {
-	// 	log.Println(err)
-	// 	return
-	// }
 	// ioutil.TempFile version
 	osFile, err = ioutil.TempFile("./uploads/", "*-"+fileHeader.Filename)
 	if err != nil {
@@ -76,4 +66,38 @@ func fileupload(w http.ResponseWriter, r *http.Request) {
 	}
 	http.Redirect(w, r, "/fileupload", http.StatusSeeOther)
 	templates.ExecuteTemplate(w, "fileupload.gohtml", nil)
+}
+func uploadfile(w http.ResponseWriter, r *http.Request) {
+	// GET give back the upload form
+	if r.Method == "GET" {
+		templates.ExecuteTemplate(w, "uploadfile.gohtml", nil)
+		return
+	}
+	// POST process the uploaded file
+	log.Println("File Upload Endpoint Hit - uploadfile")
+	r.ParseMultipartForm(10)
+	file, fileHeader, err := r.FormFile("uploadfile")
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	defer file.Close()
+	// log.Printf("Uploaded File: %+v\n", fileHeader.Filename)
+	// log.Printf("File Size: %+v\n", fileHeader.Size)
+	// log.Printf("MIME Header: %+v\n", fileHeader.Header)
+	var osFile *os.File
+	// GitHub copilot version (os.OpenFile)
+	osFile, err = os.OpenFile("./uploads/"+fileHeader.Filename, os.O_WRONLY|os.O_CREATE, 0666)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	defer osFile.Close()
+	_, err = io.Copy(osFile, file)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	http.Redirect(w, r, "/uploadfile", http.StatusSeeOther)
+	templates.ExecuteTemplate(w, "uploadfile.gohtml", nil)
 }

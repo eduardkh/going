@@ -9,14 +9,13 @@
 </head>
 
 <body>
-    <h1>fileupload</h1>
-    <form action="/fileupload" enctype="multipart/form-data" method="POST">
+    <h1>uploadfile</h1>
+    <form action="/uploadfile" enctype="multipart/form-data" method="POST">
         <input type="file" name="uploadfile">
         <input type="submit" value="upload">
     </form>
     <p>
-        here we use ioutil.TempFile to create a temporary file, and then use osFile.Write to copy the file to the
-        destination.
+        here we use os.OpenFile to open the file, and then use io.Copy to copy the file to the destination.
     </p>
 </body>
 
