@@ -9,11 +9,11 @@ import (
 // For HMAC signing method, the key can be any []byte. It is recommended to generate
 // a key using crypto/rand or something equivalent. You need the same key for signing
 // and validating.
-var hmacSampleSecret []byte
+var hmacSampleSecret []byte = []byte("secret")
 
 func main() {
 	// sample token string taken from the New example
-	tokenString := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIiLCJuYmYiOjE0NDQ0Nzg0MDB9.aGTWgif4pwMnjF8My859yqoueBN9ueg95F58WNFt1ps"
+	tokenString := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIiLCJuYmYiOjE0NDQ0Nzg0MDB9.Nv24hvNy238QMrpHvYw-BxyCp00jbsTqjVgzk81PiYA"
 
 	// Parse takes the token string and a function for looking up the key. The latter is especially
 	// useful if you use multiple keys for your application.  The standard is to use 'kid' in the
