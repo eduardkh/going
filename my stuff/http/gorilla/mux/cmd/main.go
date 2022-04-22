@@ -10,13 +10,15 @@ import (
 )
 
 func main() {
-	router := mux.NewRouter()
+	r := mux.NewRouter()
 
-	router.HandleFunc("/", handlers.Index)
-	router.HandleFunc("/methods", handlers.GetHandler).Methods("GET")
-	router.HandleFunc("/methods", handlers.PostHandler).Methods("POST")
-	router.HandleFunc("/methods", handlers.PutHandler).Methods("PUT")
+	r.HandleFunc("/", handlers.Index)
+	r.HandleFunc("/methods", handlers.GetHandler).Methods("GET")
+	r.HandleFunc("/methods", handlers.PostHandler).Methods("POST")
+	r.HandleFunc("/methods", handlers.PutHandler).Methods("PUT")
+
+	r.HandleFunc("/name/{name}/age/{age}", handlers.PathParamHandler).Methods("GET")
 
 	log.Println("running on port 8080")
-	log.Fatal(http.ListenAndServe(":8080", router))
+	log.Fatal(http.ListenAndServe(":8080", r))
 }

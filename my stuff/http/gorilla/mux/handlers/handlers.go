@@ -1,6 +1,11 @@
 package handlers
 
-import "net/http"
+import (
+	"fmt"
+	"net/http"
+
+	"github.com/gorilla/mux"
+)
 
 func Index(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Gorilla!\n"))
@@ -13,4 +18,10 @@ func PostHandler(w http.ResponseWriter, r *http.Request) {
 }
 func PutHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("PUT Method\n"))
+}
+func PathParamHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	name := vars["name"]
+	age := vars["age"]
+	fmt.Fprintf(w, "Name : %s\nAge  : %s\n", name, age)
 }
