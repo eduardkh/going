@@ -1,0 +1,22 @@
+# play with mongoDB
+
+> bring up the stack (compose file)
+
+```bash
+docker-compose -f stack.yml up -d
+```
+
+> copy sample data to mongoDB container
+
+```bash
+docker cp posts.json a82ecd165f4c:/posts.json
+```
+
+> import data and check the result (mongo shell)
+
+```bash
+# in the container
+docker exec -it a82ecd165f4c bash
+mongoimport -u root -p root --authenticationDatabase admin --db blog --collection posts --file posts.json --jsonArray
+mongosh -u root -p root --authenticationDatabase admin
+```
