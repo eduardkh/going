@@ -15,8 +15,8 @@ docker cp movies.json a82ecd165f4c:/movies.json
 > import data and check the result (mongo shell)
 
 ```bash
-# in the container
 docker exec -it a82ecd165f4c bash
+# in the container
 mongoimport -u root -p root --authenticationDatabase admin --db sample_mflix --collection movies --file movies.json
 mongosh -u root -p root --authenticationDatabase admin
 ```
