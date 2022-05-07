@@ -9,7 +9,7 @@ docker-compose -f stack.yml up -d
 > copy sample data to mongoDB container
 
 ```bash
-docker cp posts.json a82ecd165f4c:/posts.json
+docker cp movies.json a82ecd165f4c:/movies.json
 ```
 
 > import data and check the result (mongo shell)
@@ -17,6 +17,6 @@ docker cp posts.json a82ecd165f4c:/posts.json
 ```bash
 # in the container
 docker exec -it a82ecd165f4c bash
-mongoimport -u root -p root --authenticationDatabase admin --db blog --collection posts --file posts.json --jsonArray
+mongoimport -u root -p root --authenticationDatabase admin --db sample_mflix --collection movies --file movies.json
 mongosh -u root -p root --authenticationDatabase admin
 ```

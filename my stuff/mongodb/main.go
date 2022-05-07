@@ -36,8 +36,8 @@ func main() {
 		}
 	}()
 
-	coll := client.Database("blog").Collection("posts")
-	title := "qui est esse"
+	coll := client.Database("sample_mflix").Collection("movies")
+	title := "Back to the Future"
 
 	var result bson.M
 	err = coll.FindOne(context.TODO(), bson.D{{"title", title}}).Decode(&result)
