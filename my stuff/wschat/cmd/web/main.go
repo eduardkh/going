@@ -3,11 +3,10 @@ package main
 import (
 	"log"
 	"net/http"
-	"wschat/handlers"
 )
 
 func main() {
-	http.HandleFunc("/", handlers.Home)
+	mux := routes()
 	log.Println("server running on port 8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":8080", mux))
 }
