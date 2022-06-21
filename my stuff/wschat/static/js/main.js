@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Error: " + error);
     }
     socket.onmessage = (message) => {
-        console.log("Message: " + message.data);
+        let data = JSON.parse(message.data);
+        console.log(data);
     }
 });
