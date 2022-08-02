@@ -1,18 +1,26 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func fizzbuzzpagaz(max int) {
-	for i := 1; i < max+1; i++ {
+	for i := 1; i <= 100; i++ {
+
 		// fmt.Printf("> i is :%v\n", i) // for debug
-		switch {
-		case (i%15 == 0 && i%5 == 0 && i%3 == 0):
-			fmt.Println("FizzBuzzPagaz")
-		case i%5 == 0:
-			fmt.Println("Buzz")
-		case i%3 == 0:
-			fmt.Println("Fizz")
-		default:
+		output := ""
+		if i%3 == 0 {
+			output += "Fizz"
+		}
+		if i%5 == 0 {
+			output += "Buzz"
+		}
+		if i%7 == 0 {
+			output += "Pagaz"
+		}
+		if output != "" {
+			fmt.Println(output)
+		} else {
 			fmt.Println(i)
 		}
 	}
