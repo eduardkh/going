@@ -20,12 +20,12 @@ func main() {
 	q := wmi.CreateQueryFrom(&dst, "Win32_Process", "")
 	// https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-process
 	// fmt.Println(q)
-	fmt.Println("\tPID\t\tName\t\tPPID")
+	fmt.Println("PID\tPPID\tName")
 
 	if err := wmi.Query(q, &dst); err != nil {
 		log.Fatal(err)
 	}
 	for _, v := range dst {
-		fmt.Printf("%6d\t%s\t%v\n", v.PID, v.Name, v.ParentProcessId)
+		fmt.Printf("%6d\t%v\t%v\n", v.PID, v.ParentProcessId, v.Name)
 	}
 }
