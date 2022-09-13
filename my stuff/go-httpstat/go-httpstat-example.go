@@ -1,3 +1,4 @@
+// https://github.com/davecheney/httpstat - alternative
 package main
 
 import (
