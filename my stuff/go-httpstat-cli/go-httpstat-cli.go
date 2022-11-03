@@ -4,6 +4,8 @@ import (
 	"log"
 	"os"
 
+	"go-httpstat-cli/pkg/sendmessage"
+
 	"github.com/urfave/cli/v2"
 )
 
@@ -34,6 +36,7 @@ func main() {
 				// get flag data
 				flagData := c.String("syslog-server")
 				log.Println("> stats for http-stats uri https://google.com")
+				sendmessage.SendMessage("tcp", "192.168.1.155", "80", "message")
 
 				// check if flag set (does not return "")
 				if flagData != "" {
