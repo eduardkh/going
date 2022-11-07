@@ -13,19 +13,25 @@ import (
 // uriCmd represents the uri command
 var uriCmd = &cobra.Command{
 	Use:   "uri",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "get stats for uri",
+	Long: `provide a single uri to scan and get the time stats for it.
+you can send the stats to a syslog server it the syslog-server flag is added.
+Example usage:
+	go-httpstat-cobra uri https://www.google.co.il/ --syslog-server 192.168.1.155`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// fmt.Println("uri called")
-		arg := args[0]
-		flg, _ := cmd.Flags().GetString("foo")
-		fmt.Printf("> user argument %q - flag %q", arg, flg)
-		// sendmessage.SendMessage("tcp", "192.168.1.155", "80", "message")
+		if len(args) > 0 {
+			// get uri to scan
+			arg := args[0]
+			fmt.Printf("> user argument %q", arg)
+			// get syslog server to send to
+			flg, _ := cmd.Flags().GetString("syslog-server")
+			if len(flg) > 0 {
+				fmt.Printf("> user argument %q - flag %q", arg, flg)
+				//
+				// sendmessage.SendMessage("tcp", "192.168.1.155", "514", "message")
+			}
+		}
 	},
 }
 
@@ -36,7 +42,7 @@ func init() {
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	uriCmd.PersistentFlags().String("foo", "", "A help for foo")
+	uriCmd.PersistentFlags().String("syslog-server", "", "pass in a syslog-server")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
