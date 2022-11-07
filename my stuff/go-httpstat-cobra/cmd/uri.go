@@ -20,17 +20,13 @@ Example usage:
 	go-httpstat-cobra uri https://www.google.co.il/ --syslog-server 192.168.1.155`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// fmt.Println("uri called")
-		if len(args) > 0 {
-			// get uri to scan
-			arg := args[0]
-			fmt.Printf("> user argument %q", arg)
-			// get syslog server to send to
-			flg, _ := cmd.Flags().GetString("syslog-server")
-			if len(flg) > 0 {
-				fmt.Printf("> user argument %q - flag %q", arg, flg)
-				//
-				// sendmessage.SendMessage("tcp", "192.168.1.155", "514", "message")
-			}
+		arg := args[0]
+		flg, _ := cmd.Flags().GetString("syslog-server")
+		if len(flg) > 0 && len(args) > 0 {
+			fmt.Printf("> user argument %q - flag %q\n", arg, flg)
+			// sendmessage.SendMessage("tcp", "192.168.1.155", "514", "message")
+		} else if len(args) > 0 {
+			fmt.Printf("> user argument %q\n", arg)
 		}
 	},
 }
