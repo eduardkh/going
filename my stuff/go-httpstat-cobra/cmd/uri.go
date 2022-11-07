@@ -5,6 +5,7 @@ package cmd
 
 import (
 	"fmt"
+	_ "go-httpstat-cobra/pkg/sendmessage"
 
 	"github.com/spf13/cobra"
 )
@@ -24,6 +25,7 @@ to quickly create a Cobra application.`,
 		arg := args[0]
 		flg, _ := cmd.Flags().GetString("foo")
 		fmt.Printf("> user argument %q - flag %q", arg, flg)
+		// sendmessage.SendMessage("tcp", "192.168.1.155", "80", "message")
 	},
 }
 
