@@ -10,23 +10,30 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var long string = `provide a single uri to scan and get the time stats for it.
+you can send the stats to a syslog server it the syslog-server flag is added.
+Example usage:
+	go-httpstat-cobra uri https://www.google.co.il/ --syslog-server 192.168.1.155`
+
 // uriCmd represents the uri command
 var uriCmd = &cobra.Command{
 	Use:   "uri",
 	Short: "get stats for uri",
-	Long: `provide a single uri to scan and get the time stats for it.
-you can send the stats to a syslog server it the syslog-server flag is added.
-Example usage:
-	go-httpstat-cobra uri https://www.google.co.il/ --syslog-server 192.168.1.155`,
+	Long:  long,
 	Run: func(cmd *cobra.Command, args []string) {
-		// fmt.Println("uri called")
-		arg := args[0]
 		flg, _ := cmd.Flags().GetString("syslog-server")
 		if len(flg) > 0 && len(args) > 0 {
+			// if an arg and a flag given - send results to syslog
+			arg := args[0]
 			fmt.Printf("> user argument %q - flag %q\n", arg, flg)
 			// sendmessage.SendMessage("tcp", "192.168.1.155", "514", "message")
 		} else if len(args) > 0 {
+			// if only an arg is given - print results to screen
+			arg := args[0]
 			fmt.Printf("> user argument %q\n", arg)
+		} else {
+			// if no args or flags given - print help
+			fmt.Println(long)
 		}
 	},
 }
