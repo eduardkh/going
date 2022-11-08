@@ -5,6 +5,7 @@ package cmd
 
 import (
 	"fmt"
+	"go-httpstat-cobra/pkg/gethttpstat"
 	_ "go-httpstat-cobra/pkg/sendmessage"
 
 	"github.com/spf13/cobra"
@@ -30,7 +31,8 @@ var uriCmd = &cobra.Command{
 		} else if len(args) > 0 {
 			// if only an arg is given - print results to screen
 			arg := args[0]
-			fmt.Printf("> user argument %q\n", arg)
+			// fmt.Printf("> user argument %q\n", arg)
+			gethttpstat.Gethttpstat(arg)
 		} else {
 			// if no args or flags given - print help
 			fmt.Println(long)
