@@ -5,7 +5,7 @@ package cmd
 
 import (
 	"bufio"
-	"fmt"
+	"go-httpstat-cobra/pkg/gethttpstat"
 	"log"
 	"os"
 
@@ -23,8 +23,6 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("uriList called")
-
 		// https://stackoverflow.com/questions/8757389/reading-a-file-line-by-line-in-go
 		file, err := os.Open("uri-list.txt")
 		if err != nil {
@@ -34,9 +32,8 @@ to quickly create a Cobra application.`,
 
 		scanner := bufio.NewScanner(file)
 		for scanner.Scan() {
-
-			log.Println("line")
 			log.Println(scanner.Text())
+			gethttpstat.Gethttpstat(scanner.Text())
 		}
 
 		if err := scanner.Err(); err != nil {

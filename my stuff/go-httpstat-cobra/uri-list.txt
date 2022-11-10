@@ -1,4 +1,3 @@
-uri1
-uri2
-uri3
-uri4
+https://www.google.co.il/
+https://www.youtube.com/
+https://www.facebook.com/
