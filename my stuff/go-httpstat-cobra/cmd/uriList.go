@@ -12,16 +12,16 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var longList string = `provide a uri-list in "uri-list.txt" file to scan and get the time stats for it.
+you can send the stats to a syslog server it the syslog-server flag is added.
+Example usage:
+	go-httpstat-cobra uriList --syslog-server 192.168.1.155`
+
 // uriListCmd represents the uriList command
 var uriListCmd = &cobra.Command{
 	Use:   "uriList",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "get stats for uri-list.txt",
+	Long:  longList,
 	Run: func(cmd *cobra.Command, args []string) {
 		// https://stackoverflow.com/questions/8757389/reading-a-file-line-by-line-in-go
 		file, err := os.Open("uri-list.txt")
