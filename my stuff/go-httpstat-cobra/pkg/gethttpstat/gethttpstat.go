@@ -10,10 +10,10 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/tcnksm/go-httpstat"
+	"github.com/eduardkh/go-httpstat"
 )
 
-func Gethttpstat(args string) {
+func Gethttpstat(args string) string {
 	req, err := http.NewRequest("GET", args, nil)
 	if err != nil {
 		log.Fatal(err)
@@ -35,5 +35,5 @@ func Gethttpstat(args string) {
 	res.Body.Close()
 	result.End(time.Now())
 
-	fmt.Printf("%+v\n", result)
+	return fmt.Sprintf("NameLookup :%v Connect: %v Pretransfer: %v StartTransfer: %v Total: %v\n", result.NameLookup, result.Connect, result.Pretransfer, result.StartTransfer, result.Totall)
 }

@@ -35,7 +35,7 @@ var uriCmd = &cobra.Command{
 			// if only an arg is given - print results to screen
 			arg := args[0]
 			// fmt.Printf("> user argument %q\n", arg)
-			gethttpstat.Gethttpstat(arg)
+			fmt.Print(gethttpstat.Gethttpstat(arg))
 		} else {
 			// if no args or flags given - print help
 			fmt.Println(long)
