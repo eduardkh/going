@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"go-httpstat-cobra/pkg/gethttpstat"
 	_ "go-httpstat-cobra/pkg/sendmessage"
+	"time"
 
 	"github.com/spf13/cobra"
 )
@@ -29,7 +30,14 @@ var uriCmd = &cobra.Command{
 		if len(flg) > 0 && len(args) > 0 {
 			// if an arg and a flag given - send results to syslog
 			arg := args[0]
-			fmt.Printf("> user argument %q - flag %q\n", arg, flg)
+			// fmt.Printf("> user argument %q - flag %q\n", arg, flg)
+			result := gethttpstat.Gethttpstat(arg)
+			// fmt.Println(result, "will send to: ", flg)
+
+			// get timestamp
+			t := time.Now()
+			tf := t.Format("Jan 02 3:04:01")
+			fmt.Printf("%v <HOSTNAME> <IP> CEF:0|go-httpstat-cobra|go-httpstat-cobra|GHC0.1|method=GET request=%v NameLookup=%v Connect=%v PreTransfer=%v StartTransfer=%v Total=%v", tf, arg, result.NameLookup, result.Connect, result.Pretransfer, result.StartTransfer, result.Totall)
 			// sendmessage.SendMessage("tcp", flg, "514", "message")
 		} else if len(args) > 0 {
 			// if only an arg is given - print results to screen
