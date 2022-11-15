@@ -7,8 +7,10 @@ import (
 	"bufio"
 	"fmt"
 	"go-httpstat-cobra/pkg/gethttpstat"
+	"go-httpstat-cobra/pkg/sendmessage"
 	"log"
 	"os"
+	"time"
 
 	"github.com/spf13/cobra"
 )
@@ -30,10 +32,33 @@ var uriListCmd = &cobra.Command{
 		if len(flg) > 0 && len(args) > 0 {
 			// if an arg and a flag given - send results to syslog
 			arg := args[0]
-			fmt.Println(arg, flg)
+			// https://stackoverflow.com/questions/8757389/reading-a-file-line-by-line-in-go
+			file, err := os.Open(arg)
+			if err != nil {
+				log.Fatal(err)
+			}
+			defer file.Close()
+
+			scanner := bufio.NewScanner(file)
+			for scanner.Scan() {
+				uri := scanner.Text()
+				// time.Sleep(1 * time.Second)
+				result := gethttpstat.Gethttpstat(uri)
+				t := time.Now()
+				tf := t.Format("Jan 02 3:04:01")
+				message := fmt.Sprintf("%v CEF:0|go-httpstat-cobra|go-httpstat-cobra|GHC0.1|method=GET request=%v NameLookup=%v Connect=%v PreTransfer=%v StartTransfer=%v Total=%v", tf, uri, result.NameLookup, result.Connect, result.Pretransfer, result.StartTransfer, result.Totall)
+				sendmessage.SendMessage("tcp", flg, "514", message)
+
+			}
+
+			if err := scanner.Err(); err != nil {
+				log.Fatal(err)
+			}
+
 		} else if len(args) > 0 {
 			// if only an arg is given - print results to screen
 			arg := args[0]
+
 			// https://stackoverflow.com/questions/8757389/reading-a-file-line-by-line-in-go
 			file, err := os.Open(arg)
 			if err != nil {
