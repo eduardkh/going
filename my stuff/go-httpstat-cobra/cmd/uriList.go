@@ -4,7 +4,11 @@ Copyright © 2022 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+	"bufio"
 	"fmt"
+	"go-httpstat-cobra/pkg/gethttpstat"
+	"log"
+	"os"
 
 	"github.com/spf13/cobra"
 )
@@ -30,7 +34,22 @@ var uriListCmd = &cobra.Command{
 		} else if len(args) > 0 {
 			// if only an arg is given - print results to screen
 			arg := args[0]
-			fmt.Println(arg)
+			// https://stackoverflow.com/questions/8757389/reading-a-file-line-by-line-in-go
+			file, err := os.Open(arg)
+			if err != nil {
+				log.Fatal(err)
+			}
+			defer file.Close()
+
+			scanner := bufio.NewScanner(file)
+			for scanner.Scan() {
+				fmt.Println(scanner.Text())
+				result := gethttpstat.Gethttpstat(scanner.Text())
+				fmt.Printf("Name Lookup :\t%v\nConnect:\t%v\nPre-Transfer:\t%v\nStart Transfer:\t%v\nTotal:\t\t%v\n\n", result.NameLookup, result.Connect, result.Pretransfer, result.StartTransfer, result.Totall)
+			}
+			if err := scanner.Err(); err != nil {
+				log.Fatal(err)
+			}
 		} else {
 			// if no args or flags given - print help
 			fmt.Println(longList)
