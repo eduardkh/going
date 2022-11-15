@@ -3,7 +3,6 @@ package gethttpstat
 // https://github.com/davecheney/httpstat - alternative
 
 import (
-	"fmt"
 	"io"
 	"io/ioutil"
 	"log"
@@ -13,7 +12,7 @@ import (
 	"github.com/eduardkh/go-httpstat"
 )
 
-func Gethttpstat(args string) string {
+func Gethttpstat(args string) httpstat.Result {
 	req, err := http.NewRequest("GET", args, nil)
 	if err != nil {
 		log.Fatal(err)
@@ -35,5 +34,5 @@ func Gethttpstat(args string) string {
 	res.Body.Close()
 	result.End(time.Now())
 
-	return fmt.Sprintf("NameLookup :%v Connect: %v Pretransfer: %v StartTransfer: %v Total: %v\n", result.NameLookup, result.Connect, result.Pretransfer, result.StartTransfer, result.Totall)
+	return result
 }

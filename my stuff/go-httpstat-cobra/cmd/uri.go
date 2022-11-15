@@ -34,8 +34,8 @@ var uriCmd = &cobra.Command{
 		} else if len(args) > 0 {
 			// if only an arg is given - print results to screen
 			arg := args[0]
-			// fmt.Printf("> user argument %q\n", arg)
-			fmt.Print(gethttpstat.Gethttpstat(arg))
+			result := gethttpstat.Gethttpstat(arg)
+			fmt.Printf("Name Lookup :\t%v\nConnect:\t%v\nPre-Transfer:\t%v\nStart Transfer:\t%v\nTotal:\t\t%v\n", result.NameLookup, result.Connect, result.Pretransfer, result.StartTransfer, result.Totall)
 		} else {
 			// if no args or flags given - print help
 			fmt.Println(long)

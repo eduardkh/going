@@ -12,13 +12,16 @@ import (
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "go-httpstat-cobra",
-	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
+	Short: "get stats for uri or list of URIs (uri-list.txt)",
+	Long: `
+Get http timing stats for any URI
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Example usage for single uri:
+go-httpstat-cobra uri https://www.google.co.il/ --syslog-server 192.168.1.155
+
+Example usage for uri list (uri-list.txt):
+go-httpstat-cobra uriList --syslog-server 192.168.1.155
+`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	// Run: func(cmd *cobra.Command, args []string) { },
