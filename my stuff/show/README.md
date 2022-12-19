@@ -36,3 +36,10 @@ go buld .
 cobra-cli add ip
 cobra-cli add interface -p ipCmd
 ```
+
+> add gateway command
+
+```bash
+cobra-cli add gateway -p ipCmd
+go mod tidy
+```
