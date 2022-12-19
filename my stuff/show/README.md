@@ -34,5 +34,5 @@ go buld .
 
 ```bash
 cobra-cli add ip
-cobra-cli add interface -p ip
+cobra-cli add interface -p ipCmd
 ```
