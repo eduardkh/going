@@ -42,4 +42,12 @@ cobra-cli add interface -p ipCmd
 ```bash
 cobra-cli add gateway -p ipCmd
 go mod tidy
+build.bat
+```
+
+> add brief command
+
+```bash
+cobra-cli add brief -p interfaceCmd
+build.bat
 ```

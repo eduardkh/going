@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-type Win32_NetworkAdapterConfiguration struct {
+type gateway_win32_NetworkAdapterConfiguration struct {
 	Description      string
 	DefaultIPGateway []string
 	IPAddress        []string
@@ -21,7 +21,7 @@ var gatewayCmd = &cobra.Command{
 	Short: "get default gateway",
 	Long:  `get default gateway`,
 	Run: func(cmd *cobra.Command, args []string) {
-		var dst []Win32_NetworkAdapterConfiguration
+		var dst []gateway_win32_NetworkAdapterConfiguration
 
 		q := wmi.CreateQueryFrom(&dst, "Win32_NetworkAdapterConfiguration", "")
 		if err := wmi.Query(q, &dst); err != nil {
