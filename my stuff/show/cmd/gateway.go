@@ -18,15 +18,9 @@ type Win32_NetworkAdapterConfiguration struct {
 // gatewayCmd represents the gateway command
 var gatewayCmd = &cobra.Command{
 	Use:   "gateway",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "get default gateway",
+	Long:  `get default gateway`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// fmt.Println("gateway called")
 		var dst []Win32_NetworkAdapterConfiguration
 
 		q := wmi.CreateQueryFrom(&dst, "Win32_NetworkAdapterConfiguration", "")
