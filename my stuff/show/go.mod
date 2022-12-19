@@ -3,6 +3,7 @@ module show
 go 1.16
 
 require (
+	github.com/bi-zone/wmi v1.1.4 // indirect
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/magiconair/properties v1.8.5 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
