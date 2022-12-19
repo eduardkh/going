@@ -4,26 +4,35 @@
 
 > initiate go module
 
-    go mod init show
+```bash
+go mod init show
+```
 
 > get the cobra module and the cobra CLI tool
 
-    go get -u github.com/spf13/cobra
-    go get -u github.com/spf13/cobra/cobra
-    go get github.com/mitchellh/go-homedir@v1.1.0
+```bash
+go get -u github.com/spf13/cobra@latest
+go install github.com/spf13/cobra-cli@latest
+```
 
 > initiate cobra project (must be the same as the go module show)
 
-    cobra init --pkg-name show
+```bash
+cobra-cli init
+```
 
 > test the app
 
-    go run show.go
+```bash
+go run main.go
+go buld .
+```
 
 `functionality`
 
 > add commands
 
-    cobra add ip
-    cobra add interface
-    cobra add brief
+```bash
+cobra-cli add ip
+cobra-cli add interface -p ip
+```

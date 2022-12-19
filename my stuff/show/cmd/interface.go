@@ -1,8 +1,10 @@
+/*
+Copyright © 2022 NAME HERE <EMAIL ADDRESS>
+*/
 package cmd
 
 import (
 	"fmt"
-	"net"
 
 	"github.com/spf13/cobra"
 )
@@ -18,29 +20,20 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		interfaces, err := net.Interfaces()
-		// handle err
-		if err != nil {
-			fmt.Println(err)
-		}
-		var nameInterf, nameAddress, nameMAC, nameMTU string = "Interface", "IP-Addres", "MAC-Address", "MTU"
-		fmt.Printf("%-34v %-20v %-17v %-v\n", nameInterf, nameAddress, nameMAC, nameMTU)
-		for _, iface := range interfaces {
-			if iface.Flags&net.FlagUp == 0 {
-				continue // interface down
-			}
-			if iface.Flags&net.FlagLoopback != 0 {
-				continue // loopback interface
-			}
-			addrs, err := iface.Addrs()
-			if err != nil {
-				panic(err)
-			}
-			fmt.Printf("%-34v %-20v %-v %v\n", iface.Name, addrs[1], iface.HardwareAddr, iface.MTU)
-		}
+		fmt.Println("interface called")
 	},
 }
 
 func init() {
 	ipCmd.AddCommand(interfaceCmd)
+
+	// Here you will define your flags and configuration settings.
+
+	// Cobra supports Persistent Flags which will work for this command
+	// and all subcommands, e.g.:
+	// interfaceCmd.PersistentFlags().String("foo", "", "A help for foo")
+
+	// Cobra supports local flags which will only run when this command
+	// is called directly, e.g.:
+	// interfaceCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
