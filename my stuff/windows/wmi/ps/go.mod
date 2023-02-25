@@ -10,5 +10,5 @@ require (
 	github.com/hashicorp/errwrap v1.0.0 // indirect
 	github.com/hashicorp/go-multierror v1.0.0 // indirect
 	github.com/scjalliance/comshim v0.0.0-20190308082608-cf06d2532c4e // indirect
-	golang.org/x/sys v0.0.0-20200806060901-a37d78b92225 // indirect
+	golang.org/x/sys v0.1.0 // indirect
 )
